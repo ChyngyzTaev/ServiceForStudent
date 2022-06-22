@@ -13,4 +13,8 @@ public class CuratorModel extends BaseModel{
     private String nameLesson;
 
     private String numberRoom;
+
+    private String post;
+
+    private String lesson;
 }

@@ -13,4 +13,6 @@ public class StudentModel extends BaseModel {
     private Long course;
 
     private String courseName;
+
+    private String post;
 }

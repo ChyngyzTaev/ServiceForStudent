@@ -13,4 +13,8 @@ public class TeacherModel extends BaseModel{
     private String nameLesson;
 
     private String numberRoom;
+
+    private String post;
+
+    private String lesson;
 }
