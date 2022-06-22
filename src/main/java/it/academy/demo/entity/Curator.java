@@ -18,4 +18,10 @@ public class Curator extends BaseEntity{
 
     @Column(name = "course_student")
     private String courseStudent;
+
+    @Column(name = "post")
+    private String post;
+
+    @Column(name = "lesson")
+    private String lesson;
 }

@@ -15,4 +15,10 @@ public class Teacher extends BaseEntity{
 
     @Column(name = "lesson_name")
     private String lessonName;
+
+    @Column(name = "post")
+    private String post;
+
+    @Column(name = "lesson")
+    private String lesson;
 }
