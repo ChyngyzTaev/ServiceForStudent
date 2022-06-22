@@ -1,9 +1,7 @@
 package it.academy.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
@@ -12,10 +10,9 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Teacher {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Teacher extends BaseEntity{
 
+    @Column(name = "lesson_name")
+    private String lessonName;
 }

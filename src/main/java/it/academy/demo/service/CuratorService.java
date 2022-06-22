@@ -8,5 +8,7 @@ public interface CuratorService {
 
     CuratorModel addNewLesson(Curator curator);
 
-    CuratorModel getPostById(Long id);
+    void deletePostById(boolean id);
+
+    void deleteLessonById(boolean id);
 }

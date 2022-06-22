@@ -1,13 +1,16 @@
 package it.academy.demo.service;
 
+import it.academy.demo.entity.Student;
 import it.academy.demo.model.StudentModel;
 
 public interface StudentService {
-    StudentModel addNewPost();
+    StudentModel addNewPost(Student student);
 
-    StudentModel searchLessonByName();
+    StudentModel searchLessonByName(Student student);
 
-    StudentModel getNewLesson();
+    StudentModel searchPostByName(Student student);
 
-    StudentModel GetPostById();
+    StudentModel getLessonByName(Student student);
+
+     StudentModel getPostByName(Student student);
 }

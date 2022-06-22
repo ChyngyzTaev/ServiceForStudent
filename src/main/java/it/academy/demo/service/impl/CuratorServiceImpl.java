@@ -24,8 +24,13 @@ public class CuratorServiceImpl implements CuratorService {
     }
 
     @Override
-    public CuratorModel getPostById(Long id) {
-        return null;
+    public void deletePostById(boolean id) {
+
+    }
+
+    @Override
+    public void deleteLessonById(boolean id) {
+
     }
 
     private void checkIdForNull(Long id) throws BadRequestException {

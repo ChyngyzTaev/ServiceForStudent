@@ -1,5 +1,6 @@
 package it.academy.demo.service.impl;
 
+import it.academy.demo.entity.Curator;
 import it.academy.demo.model.CuratorModel;
 import it.academy.demo.rapository.TeacherRepository;
 import it.academy.demo.service.TeacherService;
@@ -10,18 +11,24 @@ public class TeacherServiceImpl implements TeacherService {
 
     private TeacherRepository teacherRepository;
 
+
     @Override
-    public CuratorModel addNewPost() {
+    public CuratorModel addNewPost(Curator curator) {
         return null;
     }
 
     @Override
-    public CuratorModel addNewLesson() {
+    public CuratorModel addNewLesson(Curator curator) {
         return null;
     }
 
     @Override
-    public CuratorModel getPostById() {
-        return null;
+    public void deletePostById(boolean id) {
+
+    }
+
+    @Override
+    public void deleteLessonById(boolean id) {
+
     }
 }
