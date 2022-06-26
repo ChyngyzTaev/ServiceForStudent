@@ -6,11 +6,11 @@ import it.academy.demo.model.StudentModel;
 public interface StudentService {
     StudentModel addNewPost(Student student);
 
-    StudentModel searchLessonByName(Student student);
+    Student searchLessonByName(Student student);
 
     StudentModel searchPostByName(Student student);
 
-    StudentModel getLessonByName(Student student);
+    StudentModel getLessonByName(String name);
 
-     StudentModel getPostByName(Student student);
+    StudentModel getPostByName(String name);
 }

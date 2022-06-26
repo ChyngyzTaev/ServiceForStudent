@@ -23,12 +23,14 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void deletePostById(boolean id) {
+    public void deletePostById(long id) {
+        teacherRepository.deleteById(id);
 
     }
 
     @Override
-    public void deleteLessonById(boolean id) {
+    public void deleteLessonById(long id) {
+        teacherRepository.deleteById(id);
 
     }
 }

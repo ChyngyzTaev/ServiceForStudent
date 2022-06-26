@@ -18,8 +18,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentModel searchLessonByName(Student student) {
-        return null;
+    public Student searchLessonByName(Student student) {
+         return null;
     }
 
     @Override
@@ -28,12 +28,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentModel getLessonByName(Student student) {
-        return null;
+    public StudentModel getLessonByName(String name) {
+        return studentRepository.getLessonByName(name);
     }
 
     @Override
-    public StudentModel getPostByName(Student student) {
-        return null;
+    public StudentModel getPostByName(String name) {
+        return studentRepository.getLessonByName(name);
     }
 }

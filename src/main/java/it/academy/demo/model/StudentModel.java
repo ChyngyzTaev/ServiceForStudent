@@ -15,4 +15,5 @@ public class StudentModel extends BaseModel {
     private String courseName;
 
     private String post;
+
 }

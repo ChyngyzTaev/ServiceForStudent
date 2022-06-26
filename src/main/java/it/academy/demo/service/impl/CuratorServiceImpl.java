@@ -2,7 +2,6 @@ package it.academy.demo.service.impl;
 
 import it.academy.demo.entity.Curator;
 import it.academy.demo.exception.BadRequestException;
-import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.CuratorModel;
 import it.academy.demo.rapository.CuratorRepository;
 import it.academy.demo.service.CuratorService;
@@ -24,13 +23,14 @@ public class CuratorServiceImpl implements CuratorService {
     }
 
     @Override
-    public void deletePostById(boolean id) {
+    public void deletePostById(long id) {
+        curatorRepository.deleteById(id);
 
     }
 
     @Override
-    public void deleteLessonById(boolean id) {
-
+    public void deleteLessonById(long id) {
+        curatorRepository.deleteById(id);
     }
 
     private void checkIdForNull(Long id) throws BadRequestException {
