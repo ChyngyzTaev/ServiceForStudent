@@ -28,12 +28,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentModel getLessonByName(String name) {
+    public StudentModel getLessonById(String name) {
         return studentRepository.getLessonByName(name);
     }
 
     @Override
-    public StudentModel getPostByName(String name) {
+    public StudentModel getPostById(String name) {
         return studentRepository.getLessonByName(name);
     }
 }

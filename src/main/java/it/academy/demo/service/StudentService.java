@@ -10,7 +10,7 @@ public interface StudentService {
 
     StudentModel searchPostByName(Student student);
 
-    StudentModel getLessonByName(String name);
+    StudentModel getLessonById(String name);
 
-    StudentModel getPostByName(String name);
+    StudentModel getPostById(String name);
 }
