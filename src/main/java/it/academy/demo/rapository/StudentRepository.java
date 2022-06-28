@@ -11,4 +11,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     Student findByName(@Param("name") String name);
 
     StudentModel getLessonByName(String name);
+
 }
