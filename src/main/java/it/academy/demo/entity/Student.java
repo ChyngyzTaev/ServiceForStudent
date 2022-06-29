@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "student")
 @Getter
 @Setter
 @AllArgsConstructor
