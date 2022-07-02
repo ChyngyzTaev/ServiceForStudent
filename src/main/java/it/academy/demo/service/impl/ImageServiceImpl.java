@@ -6,11 +6,13 @@ import it.academy.demo.model.response.ImageModelResponse;
 import it.academy.demo.rapository.ImageRepository;
 import it.academy.demo.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 
     final ImageRepository imageRepository;
