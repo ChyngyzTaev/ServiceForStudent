@@ -13,15 +13,9 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Curator extends BaseEntity{
 
-    @Column(name = "lesson_name")
+    @Column(name = "lesson_name", unique = true)
     private String lessonName;
 
     @Column(name = "course_student")
-    private String courseStudent;
-
-    @Column(name = "post")
-    private String post;
-
-    @Column(name = "lesson")
-    private String lesson;
+    private int courseStudent;
 }

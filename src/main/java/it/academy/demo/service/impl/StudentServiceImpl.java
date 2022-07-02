@@ -1,39 +1,62 @@
 package it.academy.demo.service.impl;
 
-import it.academy.demo.entity.Student;
-import it.academy.demo.model.StudentModel;
+import it.academy.demo.entity.Lesson;
+import it.academy.demo.entity.Post;
+import it.academy.demo.exception.BadRequestException;
+import it.academy.demo.model.LessonModel;
+import it.academy.demo.model.PostModel;
+import it.academy.demo.rapository.LessonRepository;
+import it.academy.demo.rapository.PostRepository;
 import it.academy.demo.rapository.StudentRepository;
 import it.academy.demo.service.StudentService;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    private StudentRepository studentRepository;
+    private PostRepository postRepository;
 
-
+    private LessonRepository lessonRepository;
     @Override
-    public StudentModel addNewPost(Student student) {
-        return null;
+    @SneakyThrows
+    public PostModel addNewPost(Post post, Long id) {
+        checkIdForNull(id);
+        PostModel postModel = new PostModel();
+        post.setId(postModel.getId());
+        post.setFirstName(postModel.getFirstName());
+        post.setLastName(postModel.getLastName());
+        post.setPost(postModel.getPost());
+        post.setLocalDateTime(postModel.getLocalDateTime());
+        postRepository.save(post);
+        return postModel;
     }
 
     @Override
-    public Student searchLessonById(Student student) {
-        return null;
+    public Optional<Lesson> searchLessonById(Long id) {
+        return lessonRepository.findById(id);
     }
 
     @Override
-    public StudentModel searchPostById(Student student) {
-        return null;
+    public Optional<Post> searchPostById(Long id) {
+        return postRepository.findById(id);
     }
 
     @Override
-    public StudentModel getLessonById(String name) {
-        return null;
+    public LessonModel getLessonById(Lesson id) {
+        return getLessonById(id);
     }
 
     @Override
-    public StudentModel getPostById(String name) {
-        return null;
+    public PostModel getPostById(Lesson id) {
+        return getPostById(id);
+    }
+
+    private void checkIdForNull(Long id) throws BadRequestException {
+        if (id == null) {
+            throw new BadRequestException("Идентификатор не может быть пустым! ");
+        }
     }
 }

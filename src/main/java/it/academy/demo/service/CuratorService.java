@@ -1,12 +1,16 @@
 package it.academy.demo.service;
 
 import it.academy.demo.entity.Curator;
+import it.academy.demo.entity.Lesson;
+import it.academy.demo.entity.Post;
 import it.academy.demo.model.CuratorModel;
+import it.academy.demo.model.LessonModel;
+import it.academy.demo.model.PostModel;
 
 public interface CuratorService {
-    CuratorModel addNewPost(Curator curator);
+    PostModel addNewPost(Post post, Long id);
 
-    CuratorModel addNewLesson(Curator curator);
+    LessonModel addNewLesson(Lesson lesson, Long id);
 
     void deletePostById(long id);
 

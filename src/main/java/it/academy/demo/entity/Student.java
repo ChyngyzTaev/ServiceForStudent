@@ -15,11 +15,8 @@ import javax.persistence.*;
 public class Student extends BaseEntity{
 
     @Column(name = "course")
-    private String course;
+    private int course;
 
     @Column(name = "course_name")
     private String courseName;
-
-    @Column(name = "post")
-    private String post;
 }

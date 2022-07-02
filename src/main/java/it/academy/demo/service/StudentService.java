@@ -1,16 +1,20 @@
 package it.academy.demo.service;
 
-import it.academy.demo.entity.Student;
-import it.academy.demo.model.StudentModel;
+import it.academy.demo.entity.Lesson;
+import it.academy.demo.entity.Post;
+import it.academy.demo.model.LessonModel;
+import it.academy.demo.model.PostModel;
+
+import java.util.Optional;
 
 public interface StudentService {
-    StudentModel addNewPost(Student student);
+    PostModel addNewPost(Post post, Long id);
 
-    Student searchLessonById(Student student);
+    Optional<Lesson> searchLessonById(Long id);
 
-    StudentModel searchPostById(Student student);
+    Optional<Post> searchPostById(Long id);
 
-    StudentModel getLessonById(String name);
+    LessonModel getLessonById(Lesson id);
 
-    StudentModel getPostById(String name);
+    PostModel getPostById(Lesson id);
 }
