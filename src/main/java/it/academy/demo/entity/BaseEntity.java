@@ -23,6 +23,4 @@ public abstract class BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "age")
-    private String age;
 }

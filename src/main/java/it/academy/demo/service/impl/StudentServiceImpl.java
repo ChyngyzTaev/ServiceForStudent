@@ -14,28 +14,26 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentModel addNewPost(Student student) {
-        Student student = new Student();
-        StudentModel
         return null;
     }
 
     @Override
-    public Student searchLessonByName(Student student) {
-         return null;
-    }
-
-    @Override
-    public StudentModel searchPostByName(Student student) {
+    public Student searchLessonById(Student student) {
         return null;
     }
 
     @Override
-    public StudentModel getLessonById(String id) {
-        return studentRepository.getLessonById(id);
+    public StudentModel searchPostById(Student student) {
+        return null;
     }
 
     @Override
-    public StudentModel getPostById(String id) {
-        return studentRepository.getLessonById(id);
+    public StudentModel getLessonById(String name) {
+        return null;
+    }
+
+    @Override
+    public StudentModel getPostById(String name) {
+        return null;
     }
 }

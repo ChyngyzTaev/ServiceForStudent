@@ -6,9 +6,9 @@ import it.academy.demo.model.StudentModel;
 public interface StudentService {
     StudentModel addNewPost(Student student);
 
-    Student searchLessonByName(Student student);
+    Student searchLessonById(Student student);
 
-    StudentModel searchPostByName(Student student);
+    StudentModel searchPostById(Student student);
 
     StudentModel getLessonById(String name);
 
