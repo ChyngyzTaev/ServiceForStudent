@@ -7,7 +7,6 @@ import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.rapository.LessonRepository;
 import it.academy.demo.rapository.PostRepository;
-import it.academy.demo.rapository.StudentRepository;
 import it.academy.demo.service.StudentService;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
@@ -45,13 +44,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public LessonModel getLessonById(Lesson id) {
-        return getLessonById(id);
+    public Lesson getLessonById(Long id) {
+        return lessonRepository.getById(id);
     }
 
     @Override
-    public PostModel getPostById(Lesson id) {
-        return getPostById(id);
+    public Post getPostById(Long id) {
+        return postRepository.getById(id);
     }
 
     private void checkIdForNull(Long id) throws BadRequestException {

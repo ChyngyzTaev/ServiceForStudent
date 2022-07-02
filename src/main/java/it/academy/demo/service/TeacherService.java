@@ -10,6 +10,8 @@ public interface TeacherService {
 
     LessonModel addNewLesson(Lesson lesson, Long id);
 
+    Post getPostById(Long id);
+
     void deletePostById(long id);
 
     void deleteLessonById(long id);

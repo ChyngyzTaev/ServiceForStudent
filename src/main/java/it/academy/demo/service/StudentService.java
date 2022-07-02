@@ -14,7 +14,7 @@ public interface StudentService {
 
     Optional<Post> searchPostById(Long id);
 
-    LessonModel getLessonById(Lesson id);
+    Lesson getLessonById(Long id);
 
-    PostModel getPostById(Lesson id);
+    Post getPostById(Long id);
 }

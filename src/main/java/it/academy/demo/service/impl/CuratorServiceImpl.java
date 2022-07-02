@@ -49,6 +49,11 @@ public class CuratorServiceImpl implements CuratorService {
     }
 
     @Override
+    public Post getPostById(Long id) {
+        return postRepository.getById(id);
+    }
+
+    @Override
     public void deletePostById(long id) {
         postRepository.deleteById(id);
     }

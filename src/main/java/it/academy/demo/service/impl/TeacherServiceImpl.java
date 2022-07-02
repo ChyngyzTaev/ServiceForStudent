@@ -3,9 +3,7 @@ package it.academy.demo.service.impl;
 import it.academy.demo.entity.Curator;
 import it.academy.demo.entity.Lesson;
 import it.academy.demo.entity.Post;
-import it.academy.demo.entity.Teacher;
 import it.academy.demo.exception.BadRequestException;
-import it.academy.demo.model.CuratorModel;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.rapository.LessonRepository;
@@ -49,6 +47,11 @@ public class TeacherServiceImpl implements TeacherService {
         lesson.setRoom(lessonModel.getRoom());
         lessonRepository.save(lesson);
         return lessonModel;
+    }
+
+    @Override
+    public Post getPostById(Long id) {
+        return postRepository.getById(id);
     }
 
     @Override
