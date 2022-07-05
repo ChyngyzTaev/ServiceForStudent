@@ -24,6 +24,6 @@ public class Teacher{
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "lesson_name")
+    @Column(name = "lesson_name", unique = true)
     private String lessonName;
 }
