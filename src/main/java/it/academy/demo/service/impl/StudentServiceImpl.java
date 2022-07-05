@@ -77,8 +77,7 @@ public class StudentServiceImpl implements StudentService {
         checkIdForNull(id);
         PostModel postModel = new PostModel();
         post.setId(postModel.getId());
-        post.setFirstName(postModel.getFirstName());
-        post.setLastName(postModel.getLastName());
+        post.setFullName(postModel.getFullName());
         post.setPost(postModel.getPost());
         post.setLocalDateTime(postModel.getLocalDateTime());
         postRepository.save(post);

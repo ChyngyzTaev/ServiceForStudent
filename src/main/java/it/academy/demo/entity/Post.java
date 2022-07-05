@@ -19,15 +19,12 @@ public class Post {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "full_Name")
+    private String fullName;
 
     @Column(name = "post")
     private String post;
 
-    @Column(name = "localDateTime")
+    @Column(name = "local_dateTime")
     private LocalDateTime localDateTime;
 }

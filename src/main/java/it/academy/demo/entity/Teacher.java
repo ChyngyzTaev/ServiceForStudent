@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Teacher")
@@ -18,12 +19,17 @@ public class Teacher{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "full_Name")
+    private String fullName;
 
     @Column(name = "lesson_name", unique = true)
     private String lessonName;
+
+    @OneToMany
+    @JoinColumn(name = "group_id")
+    List<Group> groups;
+
+    @OneToMany
+    @JoinColumn(name = "lesson_id")
+    List<Lesson> lessons;
 }

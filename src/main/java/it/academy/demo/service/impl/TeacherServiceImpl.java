@@ -78,8 +78,7 @@ public class TeacherServiceImpl implements TeacherService {
         checkIdForNull(id);
         PostModel postModel = new PostModel();
         post.setId(postModel.getId());
-        post.setFirstName(postModel.getFirstName());
-        post.setLastName(postModel.getLastName());
+        post.setFullName(postModel.getFullName());
         post.setPost(postModel.getPost());
         post.setLocalDateTime(postModel.getLocalDateTime());
         postRepository.save(post);
@@ -92,8 +91,7 @@ public class TeacherServiceImpl implements TeacherService {
         checkIdForNull(id);
         LessonModel lessonModel = new LessonModel();
         lesson.setId(lessonModel.getId());
-        lesson.setFirstName(lessonModel.getFirstName());
-        lesson.setLastName(lessonModel.getLastName());
+        lesson.setFullName(lessonModel.getFullName());
         lesson.setNameLesson(lessonModel.getNameLesson());
         lesson.setLocalDateTime(lessonModel.getLocalDateTime());
         lesson.setRoom(lessonModel.getRoom());

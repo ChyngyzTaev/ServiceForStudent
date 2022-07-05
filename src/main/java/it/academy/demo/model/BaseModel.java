@@ -12,7 +12,5 @@ import lombok.Setter;
 public abstract class BaseModel {
     private Long id;
 
-    private String firstName;
-
-    private String lastName;
+    private String fullName;
 }

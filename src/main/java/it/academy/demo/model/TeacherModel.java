@@ -15,6 +15,4 @@ public class TeacherModel extends BaseModel{
     private String numberRoom;
 
     private String post;
-
-    private String lesson;
 }

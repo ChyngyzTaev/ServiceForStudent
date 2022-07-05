@@ -19,11 +19,8 @@ public class Lesson{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(name = "name_lesson")
     private String nameLesson;
@@ -31,6 +28,6 @@ public class Lesson{
     @Column(name = "room")
     private String room;
 
-    @Column(name = "localDateTime")
+    @Column(name = "local_dateTime")
     private LocalDateTime localDateTime;
 }
