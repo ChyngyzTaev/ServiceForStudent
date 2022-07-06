@@ -4,13 +4,13 @@ import com.sun.istack.NotNull;
 import it.academy.demo.entity.Image;
 import it.academy.demo.entity.Lesson;
 import it.academy.demo.entity.Post;
+import it.academy.demo.exception.BadRequestException;
 import it.academy.demo.exception.NotFoundException;
+import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.model.request.ImageModelRequest;
 import it.academy.demo.model.response.ImageModelResponse;
-import it.academy.demo.rapository.ImageRepository;
-import it.academy.demo.rapository.LessonRepository;
-import it.academy.demo.rapository.PostRepository;
+import it.academy.demo.rapository.*;
 import it.academy.demo.service.StudentService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,8 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-
+    private UpdateLessonRepository updateLessonRepository;
+    private UpdatePostRepository updatePostRepository;
     private PostRepository postRepository;
     private LessonRepository lessonRepository;
     private ImageRepository imageRepository;
@@ -97,4 +98,36 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new NotFoundException("Id not found" + id));
     }
 
+    @Override
+    public PostModel updatePost(PostModel postModel){
+        Long id = postModel.getId();
+        checkIdForNull(id);
+        Post post = updatePostRepository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("Идентификатор поста: " + id + "не найден"));
+        updatePostRepository.save(post);
+        return postModel;
+    }
+
+    @Override
+    public LessonModel updateLesson(LessonModel lessonModel){
+        Long id = lessonModel.getId();
+        checkIdForNull(id);
+        Lesson lesson = updateLessonRepository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException("Идентификатор урока: " + id + "не найден"));
+        updateLessonRepository.save(lesson);
+        return lessonModel;
+    }
+
+    @Override
+    public void deletePostById(long id) {
+        postRepository.deleteById(id);
+    }
+
+    private void checkIdForNull(Long id) {
+        if (id == null) {
+            throw new BadRequestException("Идентификатор не может быть пустым! ");
+        }
+    }
 }

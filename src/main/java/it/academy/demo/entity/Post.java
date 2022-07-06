@@ -25,6 +25,6 @@ public class Post {
     @Column(name = "post")
     private String post;
 
-    @Column(name = "local_dateTime")
+    @Column(name = "local_date_time")
     private LocalDateTime createdAt;
 }
