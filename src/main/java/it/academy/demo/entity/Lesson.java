@@ -19,8 +19,9 @@ public class Lesson{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "full_name")
-    private String fullName;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private Teacher createdBy;
 
     @Column(name = "name_lesson")
     private String nameLesson;
@@ -28,6 +29,6 @@ public class Lesson{
     @Column(name = "room")
     private String room;
 
-    @Column(name = "local_dateTime")
-    private LocalDateTime localDateTime;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 }

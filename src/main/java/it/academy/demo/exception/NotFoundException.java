@@ -1,6 +1,6 @@
 package it.academy.demo.exception;
 
-public class NotFoundException extends Throwable{
+public class NotFoundException extends RuntimeException{
     private String message;
 
     public NotFoundException(String message) {

@@ -1,9 +1,10 @@
 package it.academy.demo.service.impl;
 
+import com.sun.istack.NotNull;
 import it.academy.demo.entity.Image;
 import it.academy.demo.entity.Lesson;
 import it.academy.demo.entity.Post;
-import it.academy.demo.exception.BadRequestException;
+import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.model.request.ImageModelRequest;
@@ -28,12 +29,37 @@ public class TeacherServiceImpl implements TeacherService {
     private ImageRepository imageRepository;
 
 
-
-    final String urlPath = "C:\\Users\\user\\Desktop";
+    private final static String URL_PATH = "C:\\Users\\user\\Desktop";
 
     @Autowired
-    public TeacherServiceImpl(ImageRepository imageRepository){
+    public TeacherServiceImpl(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
+    }
+
+    @SneakyThrows
+    @Override
+    public PostModel addNewPost(PostModel postModel) {
+        Post post = new Post();
+        post.setId(postModel.getId());
+        post.setFullName(postModel.getFullName());
+        post.setPost(postModel.getPost());
+        post.setCreatedAt(postModel.getCreatedAt());
+        postRepository.save(post);
+        return postModel;
+    }
+
+    @Override
+    @SneakyThrows
+    @NotNull
+    public LessonModel addNewLesson(Lesson lesson) {
+        LessonModel lessonModel = new LessonModel();
+        lesson.setId(lessonModel.getId());
+        lesson.setCreatedBy(lessonModel.getFullName());
+        lesson.setNameLesson(lessonModel.getNameLesson());
+        lesson.setCreatedAt(lessonModel.getCreatedAt());
+        lesson.setRoom(lessonModel.getRoom());
+        lessonRepository.save(lesson);
+        return lessonModel;
     }
 
     @Override
@@ -41,15 +67,14 @@ public class TeacherServiceImpl implements TeacherService {
         Image image = null;
 
         try {
-            File imageFile = new File(urlPath + imageModelRequest.getName() + ".png");
+            File imageFile = new File(URL_PATH + imageModelRequest.getName() + ".png");
             imageModelRequest.getFile().transferTo(imageFile);
 
             image = imageRepository.save(Image.builder()
                     .nameFile(imageFile.getName())
                     .pathFile(imageFile.getName())
                     .build());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return ImageModelResponse.builder()
@@ -71,37 +96,10 @@ public class TeacherServiceImpl implements TeacherService {
         return imageModelResponses;
     }
 
-
-    @SneakyThrows
-    @Override
-    public PostModel addNewPost(Post post, Long id) {
-        checkIdForNull(id);
-        PostModel postModel = new PostModel();
-        post.setId(postModel.getId());
-        post.setFullName(postModel.getFullName());
-        post.setPost(postModel.getPost());
-        post.setLocalDateTime(postModel.getLocalDateTime());
-        postRepository.save(post);
-        return postModel;
-    }
-
-    @Override
-    @SneakyThrows
-    public LessonModel addNewLesson(Lesson lesson, Long id) {
-        checkIdForNull(id);
-        LessonModel lessonModel = new LessonModel();
-        lesson.setId(lessonModel.getId());
-        lesson.setFullName(lessonModel.getFullName());
-        lesson.setNameLesson(lessonModel.getNameLesson());
-        lesson.setLocalDateTime(lessonModel.getLocalDateTime());
-        lesson.setRoom(lessonModel.getRoom());
-        lessonRepository.save(lesson);
-        return lessonModel;
-    }
-
     @Override
     public Post getPostById(Long id) {
-        return postRepository.getById(id);
+        return postRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Id not found: " + id));
     }
 
     @Override
@@ -112,11 +110,5 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void deleteLessonById(long id) {
         lessonRepository.deleteById(id);
-    }
-
-    private void checkIdForNull(Long id) throws BadRequestException {
-        if (id == null) {
-            throw new BadRequestException("Идентификатор не может быть пустым! ");
-        }
     }
 }

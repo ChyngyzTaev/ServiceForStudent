@@ -7,18 +7,13 @@ import it.academy.demo.model.request.ImageModelRequest;
 import it.academy.demo.model.response.ImageModelResponse;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface StudentService {
-    PostModel addNewPost(Post post, Long id);
+    PostModel addNewPost(PostModel postModel);
 
     ImageModelResponse saveImage (ImageModelRequest imageModelRequest);
 
     List<ImageModelResponse> getAll(ImageModelResponse imageModelResponse);
-
-    Optional<Lesson> searchLessonById(Long id);
-
-    Optional<Post> searchPostById(Long id);
 
     Lesson getLessonById(Long id);
 

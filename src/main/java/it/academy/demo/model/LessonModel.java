@@ -1,5 +1,6 @@
 package it.academy.demo.model;
 
+import it.academy.demo.entity.Teacher;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,10 +12,14 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LessonModel extends BaseModel{
+public class LessonModel {
+    private Long id;
+
+    private Teacher fullName;
+
     private String nameLesson;
 
     private String room;
 
-    private LocalDateTime localDateTime;
+    private LocalDateTime createdAt;
 }

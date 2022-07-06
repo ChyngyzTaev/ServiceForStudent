@@ -29,4 +29,8 @@ public class Group {
     @OneToMany
     @JoinColumn(name = "student_id")
     private List<Student> students;
+
+    @Column(name = "course")
+    private Long course;
+
 }

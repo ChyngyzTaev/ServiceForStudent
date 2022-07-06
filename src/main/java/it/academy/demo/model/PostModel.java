@@ -11,8 +11,12 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostModel extends BaseModel {
+public class PostModel {
+    private Long id;
+
+    private String fullName;
+
     private String post;
 
-    private LocalDateTime localDateTime;
+    private LocalDateTime createdAt;
 }

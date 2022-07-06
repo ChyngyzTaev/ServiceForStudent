@@ -26,5 +26,5 @@ public class Post {
     private String post;
 
     @Column(name = "local_dateTime")
-    private LocalDateTime localDateTime;
+    private LocalDateTime createdAt;
 }

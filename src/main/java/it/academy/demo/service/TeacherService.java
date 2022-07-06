@@ -10,9 +10,9 @@ import it.academy.demo.model.response.ImageModelResponse;
 import java.util.List;
 
 public interface TeacherService {
-    PostModel addNewPost(Post post, Long id);
+    PostModel addNewPost(PostModel post);
 
-    LessonModel addNewLesson(Lesson lesson, Long id);
+    LessonModel addNewLesson(Lesson lesson);
 
     ImageModelResponse saveImage (ImageModelRequest imageModelRequest);
 

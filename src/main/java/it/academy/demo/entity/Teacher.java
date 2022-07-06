@@ -22,9 +22,6 @@ public class Teacher{
     @Column(name = "full_Name")
     private String fullName;
 
-    @Column(name = "lesson_name", unique = true)
-    private String lessonName;
-
     @OneToMany
     @JoinColumn(name = "group_id")
     List<Group> groups;

@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Student")
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,10 +21,4 @@ public class Student{
 
     @Column(name = "full_name")
     private String fullName;
-
-    @Column(name = "course")
-    private int course;
-
-    @Column(name = "course_name")
-    private String courseName;
 }
