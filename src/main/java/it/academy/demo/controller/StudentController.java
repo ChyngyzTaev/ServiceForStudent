@@ -53,8 +53,13 @@ public class StudentController {
 
     @PostMapping("/create/new/post")
     public ResponseEntity addNewPost(@RequestBody PostModel postModel){
-        studentService.addNewPost(postModel);
-        return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        try {
+            return new ResponseEntity(studentService.addNewPost(postModel), HttpStatus.OK);
+        } catch (BadRequestException badRequestException) {
+            return new ResponseEntity(badRequestException.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (Exception exception) {
+            return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/get-Lesson/{id}")

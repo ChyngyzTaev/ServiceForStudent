@@ -38,9 +38,7 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    @SneakyThrows
-    @NotNull
-    public PostModel addNewPost(PostModel postModel) {
+    public PostModel addNewPost(@NotNull PostModel postModel) {
         Post post = new Post();
         post.setId(postModel.getId());
         post.setFullName(postModel.getFullName());

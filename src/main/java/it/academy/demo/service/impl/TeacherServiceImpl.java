@@ -37,9 +37,8 @@ public class TeacherServiceImpl implements TeacherService {
         this.imageRepository = imageRepository;
     }
 
-    @SneakyThrows
     @Override
-    public PostModel addNewPost(PostModel postModel) {
+    public PostModel addNewPost(@NotNull  PostModel postModel) {
         Post post = new Post();
         post.setId(postModel.getId());
         post.setFullName(postModel.getFullName());
@@ -50,9 +49,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    @SneakyThrows
-    @NotNull
-    public LessonModel addNewLesson(LessonModel lessonModel) {
+    public LessonModel addNewLesson(@NotNull  LessonModel lessonModel) {
         Lesson lesson = new Lesson();
         lesson.setId(lessonModel.getId());
         lesson.setCreatedBy(lessonModel.getFullName());
