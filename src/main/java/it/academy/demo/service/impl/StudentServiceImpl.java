@@ -50,7 +50,6 @@ public class StudentServiceImpl implements StudentService {
         return postModel;
     }
 
-    @Override
     public ImageModelResponse saveImage(ImageModelRequest imageModelRequest) {
         Image image = null;
 
@@ -72,7 +71,7 @@ public class StudentServiceImpl implements StudentService {
                 .build();
     }
 
-    @Override
+
     public List<ImageModelResponse> getAll(ImageModelResponse imageModelResponse) {
         List<ImageModelResponse> imageModelResponses = new ArrayList<>();
 
@@ -89,13 +88,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Lesson getLessonById(Long id) {
         return lessonRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Id not found" + id));
+                .orElseThrow(() -> new NotFoundException("Id" + id + "не найден"));
     }
 
     @Override
     public Post getPostById(Long id) {
         return postRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Id not found" + id));
+                .orElseThrow(() -> new NotFoundException("Id" + id + "не найден"));
     }
 
     @Override

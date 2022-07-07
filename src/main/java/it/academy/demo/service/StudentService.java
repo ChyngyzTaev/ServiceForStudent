@@ -12,10 +12,6 @@ import java.util.List;
 public interface StudentService {
     PostModel addNewPost(PostModel postModel);
 
-    ImageModelResponse saveImage (ImageModelRequest imageModelRequest);
-
-    List<ImageModelResponse> getAll(ImageModelResponse imageModelResponse);
-
     Lesson getLessonById(Long id);
 
     Post getPostById(Long id);

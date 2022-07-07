@@ -13,10 +13,6 @@ public interface TeacherService {
 
     LessonModel addNewLesson(LessonModel lessonModel);
 
-    ImageModelResponse saveImage (ImageModelRequest imageModelRequest);
-
-    List<ImageModelResponse> getAll(ImageModelResponse imageModelResponse);
-
     Post getPostById(Long id);
 
     PostModel updatePost(PostModel postModel);

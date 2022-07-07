@@ -63,11 +63,6 @@ public class TeacherController {
         return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("/get-all")
-    public List<ImageModelResponse> getAll(ImageModelResponse imageModelResponse){
-        return teacherService.getAll(imageModelResponse);
-    }
-
     @GetMapping("/get-post/{id}")
     public Post getPostById(Long id){
         return teacherService.getPostById(id);
