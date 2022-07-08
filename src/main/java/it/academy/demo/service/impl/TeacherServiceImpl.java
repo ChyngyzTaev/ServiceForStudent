@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import it.academy.demo.entity.Image;
 import it.academy.demo.entity.Lesson;
 import it.academy.demo.entity.Post;
+import it.academy.demo.entity.Teacher;
 import it.academy.demo.exception.BadRequestException;
 import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.LessonModel;
@@ -119,6 +120,7 @@ public class TeacherServiceImpl implements TeacherService {
         Lesson lesson = updateLessonRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("Идентификатор урока: " + id + "не найден"));
+        setUpdateLessonFields(lesson, lessonModel);
         updateLessonRepository.save(lesson);
         return lessonModel;
     }
@@ -137,5 +139,20 @@ public class TeacherServiceImpl implements TeacherService {
         if (id == null) {
             throw new BadRequestException("Идентификатор не может быть пустым! ");
         }
+    }
+
+    private void setUpdateLessonFields (Lesson lesson, LessonModel lessonModel){
+        Teacher createdBy = lessonModel.getCreatedBy();
+        String nameLesson = lessonModel.getNameLesson();
+        String room = lessonModel.getRoom();
+
+        if (createdBy != null)
+            lesson.setCreatedBy(createdBy);
+
+        if (nameLesson != null)
+            lesson.setNameLesson(nameLesson);
+
+        if (room != null)
+            lesson.setRoom(room);
     }
 }
