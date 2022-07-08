@@ -1,30 +1,27 @@
 package it.academy.demo.controller;
 
-import it.academy.demo.entity.Lesson;
-import it.academy.demo.entity.Post;
 import it.academy.demo.exception.BadRequestException;
 import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.model.request.AuthenticationRequest;
 import it.academy.demo.model.response.AuthenticationResponse;
-import it.academy.demo.model.response.ImageModelResponse;
 import it.academy.demo.security.jwt.JwtUtil;
 import it.academy.demo.service.StudentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 public class StudentController {
     @Autowired
     private StudentService studentService;
-
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -62,14 +59,30 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/get-Lesson/{id}")
-    public Lesson getLessonById(Long id){
-        return studentService.getLessonById(id);
+    @GetMapping("/get-post/{id}")
+    public ResponseEntity getLessonById(@PathVariable Long id) {
+        try {
+            return new ResponseEntity(studentService.getLessonById(id), HttpStatus.OK);
+        } catch (BadRequestException bre){
+            return new ResponseEntity(bre.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (NotFoundException nfe) {
+            return new ResponseEntity(nfe.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e){
+            return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/get-post/{id}")
-    public Post getPostById (Long id){
-        return studentService.getPostById(id);
+    public ResponseEntity getPostById(@PathVariable Long id) {
+        try {
+            return new ResponseEntity(studentService.getPostById(id), HttpStatus.OK);
+        } catch (BadRequestException bre){
+            return new ResponseEntity(bre.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (NotFoundException nfe) {
+            return new ResponseEntity(nfe.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e){
+            return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/update-post")

@@ -6,6 +6,7 @@ import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.model.request.ImageModelRequest;
 import it.academy.demo.model.response.ImageModelResponse;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 

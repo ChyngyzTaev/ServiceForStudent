@@ -14,6 +14,7 @@ import it.academy.demo.rapository.*;
 import it.academy.demo.service.TeacherService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -52,7 +53,7 @@ public class TeacherServiceImpl implements TeacherService {
     public LessonModel addNewLesson(@NotNull  LessonModel lessonModel) {
         Lesson lesson = new Lesson();
         lesson.setId(lessonModel.getId());
-        lesson.setCreatedBy(lessonModel.getFullName());
+        lesson.setCreatedBy(lessonModel.getCreatedBy());
         lesson.setNameLesson(lessonModel.getNameLesson());
         lesson.setCreatedAt(lessonModel.getCreatedAt());
         lesson.setRoom(lessonModel.getRoom());
@@ -93,9 +94,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Post getPostById(Long id) {
-        return postRepository.findById(id)
+    public PostModel getPostById(Long id) {
+        Post post = postRepository
+                .findById(id)
                 .orElseThrow(() -> new NotFoundException("Id: " + id + "не найден"));
+        return post.toModel();
     }
 
     @Override

@@ -13,7 +13,7 @@ public interface TeacherService {
 
     LessonModel addNewLesson(LessonModel lessonModel);
 
-    Post getPostById(Long id);
+    PostModel getPostById(Long id);
 
     PostModel updatePost(PostModel postModel);
 

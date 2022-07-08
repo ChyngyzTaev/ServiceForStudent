@@ -1,5 +1,6 @@
 package it.academy.demo.entity;
 
+import it.academy.demo.model.PostModel;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -27,4 +28,12 @@ public class Post {
 
     @Column(name = "local_date_time")
     private LocalDateTime createdAt;
+
+    public PostModel toModel(){
+        return PostModel.builder()
+                .id(id)
+                .fullName(fullName)
+                .post(post)
+                .build();
+    }
 }

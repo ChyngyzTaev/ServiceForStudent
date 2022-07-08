@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class LessonModel {
     private Long id;
 
-    private Teacher fullName;
+    private Teacher createdBy;
 
     private String nameLesson;
 
