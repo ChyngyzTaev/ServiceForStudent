@@ -4,54 +4,20 @@ import it.academy.demo.exception.BadRequestException;
 import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
-import it.academy.demo.model.request.AuthenticationRequest;
-import it.academy.demo.model.response.AuthenticationResponse;
-import it.academy.demo.security.jwt.JwtUtil;
-import it.academy.demo.securityDetails.TeacherDetailsService;
 import it.academy.demo.service.TeacherService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/teacher")
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private JwtUtil jwtUtil;
-
-
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthenticationRequest authenticationRequest) {
-        String username = authenticationRequest.getUserName();
-        String password = authenticationRequest.getPassword();
-
-        if (username == null || username.isEmpty())
-            return getErrorAuthorizationMessage("Заполните поле логин");
-
-        if (password == null || password.isEmpty())
-            return getErrorAuthorizationMessage("Заполните поле пароль");
-
-        if (!username.equals("teacher") || !password.equals("teacher"))
-            getErrorAuthorizationMessage("Неверный логин или пароль");
-
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        final String jwt = jwtUtil.generateToken(userDetails);
-
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
-    }
-
     @PostMapping("/create/new/post")
-    public ResponseEntity addNewPost(@RequestBody PostModel postModel){
+    public ResponseEntity addNewPost(@RequestBody PostModel postModel) {
         try {
             return new ResponseEntity(teacherService.addNewPost(postModel), HttpStatus.OK);
         } catch (BadRequestException badRequestException) {
@@ -62,7 +28,7 @@ public class TeacherController {
     }
 
     @PostMapping("/create/new/lesson")
-    public ResponseEntity addNewLesson(@RequestBody LessonModel lessonModel){
+    public ResponseEntity addNewLesson(@RequestBody LessonModel lessonModel) {
         try {
             return new ResponseEntity(teacherService.addNewLesson(lessonModel), HttpStatus.OK);
         } catch (BadRequestException badRequestException) {
@@ -76,48 +42,48 @@ public class TeacherController {
     public ResponseEntity getPostById(@PathVariable Long id) {
         try {
             return new ResponseEntity(teacherService.getPostById(id), HttpStatus.OK);
-        } catch (BadRequestException bre){
+        } catch (BadRequestException bre) {
             return new ResponseEntity(bre.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (NotFoundException nfe) {
             return new ResponseEntity(nfe.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PutMapping("/update-post")
-    public ResponseEntity updatePost(@RequestBody PostModel postModel){
+    public ResponseEntity updatePost(@RequestBody PostModel postModel) {
         try {
             return new ResponseEntity(teacherService.updatePost(postModel), HttpStatus.OK);
-        } catch (BadRequestException bre){
+        } catch (BadRequestException bre) {
             return new ResponseEntity(bre.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (NotFoundException nfe) {
             return new ResponseEntity(nfe.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PutMapping("/update-lesson")
-    public ResponseEntity updateLesson(@RequestBody LessonModel lessonModel){
+    public ResponseEntity updateLesson(@RequestBody LessonModel lessonModel) {
         try {
             return new ResponseEntity(teacherService.updateLesson(lessonModel), HttpStatus.OK);
-        } catch (BadRequestException bre){
+        } catch (BadRequestException bre) {
             return new ResponseEntity(bre.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (NotFoundException nfe) {
             return new ResponseEntity(nfe.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @DeleteMapping("/delete-post/{id}")
-    public void deletePostById(Long id){
+    public void deletePostById(Long id) {
         teacherService.deletePostById(id);
     }
 
     @DeleteMapping("/delete-lesson/{id}")
-    public void deleteLessonById(Long id){
+    public void deleteLessonById(Long id) {
         teacherService.deleteLessonById(id);
     }
 

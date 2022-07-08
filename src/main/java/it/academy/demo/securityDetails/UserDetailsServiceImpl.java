@@ -11,10 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class TeacherDetailsService implements UserDetailsService {
+@Primary
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        return new User("teacher", "teacher", new ArrayList<>());
+        if(userName.contains("teacher")){
+            return new User("teacher", "teacher", new ArrayList<>());
+        }else
+            return new User("student", "student", new ArrayList<>());
+
     }
 }
