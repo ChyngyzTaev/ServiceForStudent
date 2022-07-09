@@ -23,7 +23,7 @@ public class UserController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) {
         String username = authenticationRequest.getUserName();
         String password = authenticationRequest.getPassword();
 
@@ -45,7 +45,7 @@ public class UserController {
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
-    private ResponseEntity getErrorAuthorizationMessage(String message) {
+    private ResponseEntity<?> getErrorAuthorizationMessage(String message) {
         return new ResponseEntity(message, HttpStatus.BAD_REQUEST);
     }
 }

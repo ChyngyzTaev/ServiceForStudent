@@ -8,7 +8,6 @@ import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
 import it.academy.demo.model.request.ImageModelRequest;
-import it.academy.demo.model.response.AuthenticationResponse;
 import it.academy.demo.model.response.ImageModelResponse;
 import it.academy.demo.rapository.*;
 import it.academy.demo.service.StudentService;
