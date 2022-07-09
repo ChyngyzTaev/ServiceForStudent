@@ -17,7 +17,7 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @PostMapping("/create/new/post")
-    public ResponseEntity addNewPost(@RequestBody PostModel postModel) {
+    public ResponseEntity<?> addNewPost(@RequestBody PostModel postModel) {
         try {
             return new ResponseEntity(teacherService.addNewPost(postModel), HttpStatus.OK);
         } catch (BadRequestException badRequestException) {
@@ -28,7 +28,7 @@ public class TeacherController {
     }
 
     @PostMapping("/create/new/lesson")
-    public ResponseEntity addNewLesson(@RequestBody LessonModel lessonModel) {
+    public ResponseEntity<?> addNewLesson(@RequestBody LessonModel lessonModel) {
         try {
             return new ResponseEntity(teacherService.addNewLesson(lessonModel), HttpStatus.OK);
         } catch (BadRequestException badRequestException) {
@@ -39,7 +39,7 @@ public class TeacherController {
     }
 
     @GetMapping("/get-post/{id}")
-    public ResponseEntity getPostById(@PathVariable Long id) {
+    public ResponseEntity<?> getPostById(@PathVariable Long id) {
         try {
             return new ResponseEntity(teacherService.getPostById(id), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -52,7 +52,7 @@ public class TeacherController {
     }
 
     @PutMapping("/update-post")
-    public ResponseEntity updatePost(@RequestBody PostModel postModel) {
+    public ResponseEntity<?> updatePost(@RequestBody PostModel postModel) {
         try {
             return new ResponseEntity(teacherService.updatePost(postModel), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -65,7 +65,7 @@ public class TeacherController {
     }
 
     @PutMapping("/update-lesson")
-    public ResponseEntity updateLesson(@RequestBody LessonModel lessonModel) {
+    public ResponseEntity<?> updateLesson(@RequestBody LessonModel lessonModel) {
         try {
             return new ResponseEntity(teacherService.updateLesson(lessonModel), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -78,16 +78,15 @@ public class TeacherController {
     }
 
     @DeleteMapping("/delete-post/{id}")
-    public void deletePostById(Long id) {
+    public ResponseEntity<?> deletePostById(Long id) {
         teacherService.deletePostById(id);
+        return ResponseEntity.ok(true);
     }
 
     @DeleteMapping("/delete-lesson/{id}")
-    public void deleteLessonById(Long id) {
+    public ResponseEntity<?> deleteLessonById(Long id) {
         teacherService.deleteLessonById(id);
-    }
+        return ResponseEntity.ok(true);
 
-    private ResponseEntity getErrorAuthorizationMessage(String message) {
-        return new ResponseEntity(message, HttpStatus.BAD_REQUEST);
     }
 }

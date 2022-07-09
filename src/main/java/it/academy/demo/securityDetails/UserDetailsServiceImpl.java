@@ -1,6 +1,5 @@
 package it.academy.demo.securityDetails;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@Primary
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
@@ -20,6 +18,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             return new User("teacher", "teacher", new ArrayList<>());
         }else
             return new User("student", "student", new ArrayList<>());
-
     }
 }

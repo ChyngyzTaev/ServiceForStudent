@@ -35,6 +35,9 @@ public class UserController {
 
         if (!username.equals("student") || !password.equals("student"))
             getErrorAuthorizationMessage("Неверный логин или пароль");
+        else {
+            getErrorAuthorizationMessage("Неверный логин или пароль");
+        }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         final String jwt = jwtUtil.generateToken(userDetails);

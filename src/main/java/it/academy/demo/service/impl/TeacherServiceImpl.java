@@ -13,34 +13,27 @@ import it.academy.demo.model.request.ImageModelRequest;
 import it.academy.demo.model.response.ImageModelResponse;
 import it.academy.demo.rapository.*;
 import it.academy.demo.service.TeacherService;
-import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class TeacherServiceImpl implements TeacherService {
-    private UpdateLessonRepository updateLessonRepository;
-    private UpdatePostRepository updatePostRepository;
-    private PostRepository postRepository;
-    private LessonRepository lessonRepository;
-    private ImageRepository imageRepository;
-
+    private final UpdateLessonRepository updateLessonRepository;
+    private final UpdatePostRepository updatePostRepository;
+    private final PostRepository postRepository;
+    private final LessonRepository lessonRepository;
+    private final ImageRepository imageRepository;
 
     private final static String URL_PATH = "C:\\Users\\user\\Desktop";
 
-    @Autowired
-    public TeacherServiceImpl(ImageRepository imageRepository) {
-        this.imageRepository = imageRepository;
-    }
 
     @Override
-    public PostModel addNewPost(@NotNull  PostModel postModel) {
+    public PostModel addNewPost(@NotNull PostModel postModel) {
         Post post = new Post();
         post.setId(postModel.getId());
         post.setFullName(postModel.getFullName());
@@ -51,7 +44,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public LessonModel addNewLesson(@NotNull  LessonModel lessonModel) {
+    public LessonModel addNewLesson(@NotNull LessonModel lessonModel) {
         Lesson lesson = new Lesson();
         lesson.setId(lessonModel.getId());
         lesson.setCreatedBy(lessonModel.getCreatedBy());
@@ -103,7 +96,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public PostModel updatePost(PostModel postModel){
+    public PostModel updatePost(PostModel postModel) {
         Long id = postModel.getId();
         checkIdForNull(id);
         Post post = updatePostRepository
@@ -114,7 +107,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public LessonModel updateLesson(LessonModel lessonModel){
+    public LessonModel updateLesson(LessonModel lessonModel) {
         Long id = lessonModel.getId();
         checkIdForNull(id);
         Lesson lesson = updateLessonRepository
@@ -141,7 +134,7 @@ public class TeacherServiceImpl implements TeacherService {
         }
     }
 
-    private void setUpdateLessonFields (Lesson lesson, LessonModel lessonModel){
+    private void setUpdateLessonFields(Lesson lesson, LessonModel lessonModel) {
         Teacher createdBy = lessonModel.getCreatedBy();
         String nameLesson = lessonModel.getNameLesson();
         String room = lessonModel.getRoom();

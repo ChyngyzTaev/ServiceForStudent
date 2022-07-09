@@ -1,17 +1,19 @@
 package it.academy.demo.service.impl;
 
 import com.sun.istack.NotNull;
+
 import it.academy.demo.entity.*;
 import it.academy.demo.exception.BadRequestException;
 import it.academy.demo.exception.NotFoundException;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
-import it.academy.demo.model.StudentModel;
 import it.academy.demo.model.request.ImageModelRequest;
+import it.academy.demo.model.response.AuthenticationResponse;
 import it.academy.demo.model.response.ImageModelResponse;
 import it.academy.demo.rapository.*;
 import it.academy.demo.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -19,20 +21,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class StudentServiceImpl implements StudentService {
-    private UpdateLessonRepository updateLessonRepository;
-    private UpdatePostRepository updatePostRepository;
-    private PostRepository postRepository;
-    private LessonRepository lessonRepository;
-    private ImageRepository imageRepository;
+    private final UpdateLessonRepository updateLessonRepository;
+    private final UpdatePostRepository updatePostRepository;
+    private final PostRepository postRepository;
+    private final LessonRepository lessonRepository;
+    private final ImageRepository imageRepository;
 
 
     private final static String URL_PATH = "C:\\Users\\user\\Desktop";
-
-    @Autowired
-    public StudentServiceImpl(ImageRepository imageRepository){
-        this.imageRepository = imageRepository;
-    }
 
 
     @Override

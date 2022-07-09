@@ -18,7 +18,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/create/new/post")
-    public ResponseEntity addNewPost(@RequestBody PostModel postModel) {
+    public ResponseEntity<?> addNewPost(@RequestBody PostModel postModel) {
         try {
             return new ResponseEntity(studentService.addNewPost(postModel), HttpStatus.OK);
         } catch (BadRequestException badRequestException) {
@@ -29,7 +29,7 @@ public class StudentController {
     }
 
     @GetMapping("/get-lesson/{id}")
-    public ResponseEntity getLessonById(@PathVariable Long id) {
+    public ResponseEntity<?> getLessonById(@PathVariable Long id) {
         try {
             return new ResponseEntity(studentService.getLessonById(id), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -42,7 +42,7 @@ public class StudentController {
     }
 
     @GetMapping("/get-post/{id}")
-    public ResponseEntity getPostById(@PathVariable Long id) {
+    public ResponseEntity<?> getPostById(@PathVariable Long id) {
         try {
             return new ResponseEntity(studentService.getPostById(id), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -55,7 +55,7 @@ public class StudentController {
     }
 
     @PutMapping("/update-post")
-    public ResponseEntity updatePost(@RequestBody PostModel postModel) {
+    public ResponseEntity<?> updatePost(@RequestBody PostModel postModel) {
         try {
             return new ResponseEntity(studentService.updatePost(postModel), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -68,7 +68,7 @@ public class StudentController {
     }
 
     @PutMapping("/update-lesson")
-    public ResponseEntity updateLesson(@RequestBody LessonModel lessonModel) {
+    public ResponseEntity<?> updateLesson(@RequestBody LessonModel lessonModel) {
         try {
             return new ResponseEntity(studentService.updateLesson(lessonModel), HttpStatus.OK);
         } catch (BadRequestException bre) {
@@ -81,7 +81,8 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete-post/{id}")
-    public void deletePostById(Long id) {
+    public ResponseEntity<?> deletePostById(Long id) {
         studentService.deletePostById(id);
+        return ResponseEntity.ok(true);
     }
 }
