@@ -4,11 +4,6 @@ import it.academy.demo.entity.Lesson;
 import it.academy.demo.entity.Post;
 import it.academy.demo.model.LessonModel;
 import it.academy.demo.model.PostModel;
-import it.academy.demo.model.request.ImageModelRequest;
-import it.academy.demo.model.response.ImageModelResponse;
-import org.springframework.http.ResponseEntity;
-
-import java.util.List;
 
 public interface StudentService {
     PostModel addNewPost(PostModel postModel);
