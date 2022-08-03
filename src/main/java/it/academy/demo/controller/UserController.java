@@ -46,6 +46,6 @@ public class UserController {
     }
 
     private ResponseEntity<?> getErrorAuthorizationMessage(String message) {
-        return new ResponseEntity(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 }

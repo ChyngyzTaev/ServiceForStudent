@@ -65,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
-    public List<ImageModelResponse> getAll(ImageModelResponse imageModelResponse) {
+    public List<ImageModelResponse> getAllImage(ImageModelResponse imageModelResponse) {
         List<ImageModelResponse> imageModelResponses = new ArrayList<>();
 
         imageRepository.findAll().forEach(x -> imageModelResponses.add(
